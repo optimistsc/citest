@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <Resource
+        name="jdbc/oracle"
+        auth="Container"
+        driverClassName="oracle.jdbc.driver.OracleDriver"
+        maxActive="100" 
+        maxIdle="30"		
+        maxWait="10000"  
+        username="kshop"
+        password="1234"
+        type="javax.sql.DataSource"
+        url="jdbc:oracle:thin:@180.233.229.139:1521:orcl" />
+</Context>
+
+ 	<!-- maxActive="100"  DB최대연결갯수 -->
+    <!-- maxIdle="30"	DB최소준비상태 -->	
+    <!-- maxWait="10000"  DB최대 연결 대기수 -->

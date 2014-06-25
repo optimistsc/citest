@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+		"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+		"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	<!-- tiles -->
+	<definition name="layouts-tiles" template="/WEB-INF/layouts/layouts-tiles.jsp">
+		<put-attribute name="header"    value="/WEB-INF/layouts/header.jsp" />
+		<put-attribute name="content"   value="" />
+		<put-attribute name="footer"    value="/WEB-INF/layouts/footer.jsp" />
+	</definition>
+	
+	<definition name="*.tiles" extends="layouts-tiles">
+		<put-attribute name="content"   value="/WEB-INF/views/{1}.jsp" />
+	</definition>
+	<definition name="/login/*.tiles" extends="layouts-tiles">
+		<put-attribute name="content"   value="/WEB-INF/views/login/{1}.jsp" />
+	</definition>
+	<definition name="/web/*.tiles" extends="layouts-tiles">
+		<put-attribute name="content"   value="/WEB-INF/views/web/{1}.jsp" />
+	</definition>
+	<definition name="/web/*/*.tiles" extends="layouts-tiles">
+		<put-attribute name="content"   value="/WEB-INF/views/web/{1}/{2}.jsp" />
+	</definition>
+	<definition name="/web/*/*/*.tiles" extends="layouts-tiles">
+		<put-attribute name="content"   value="/WEB-INF/views/web/{1}/{2}/{3}.jsp" />
+	</definition>
+	
+	<!-- no tiles -->
+	<definition name="no-tiles" template="/WEB-INF/layouts/noTemplate.jsp">
+		<put-attribute name="noTemplate"   value="" />
+	</definition>
+	
+	<definition name="*.jsp" extends="no-tiles">
+		<put-attribute name="noTemplate" value="/WEB-INF/views/{1}.jsp" />
+	</definition>
+	
+	<definition name="/web/*.jsp" extends="no-tiles">
+		<put-attribute name="noTemplate" value="/WEB-INF/views/web/{1}.jsp" />
+	</definition>
+	<definition name="/web/*/*.jsp" extends="no-tiles">
+		<put-attribute name="noTemplate"   value="/WEB-INF/views/web/{1}/{2}.jsp" />
+	</definition>
+	<definition name="/web/*/*/*.jsp" extends="no-tiles">
+		<put-attribute name="noTemplate"   value="/WEB-INF/views/web/{1}/{2}/{3}.jsp" />
+	</definition>
+</tiles-definitions>
+
+

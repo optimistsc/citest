@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/aop       
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+<!-- 어노테이션처리 -->
+
+
+
+<!-- 컨트롤러 -->
+
+ 	<bean id="boardAdminController" class="com.kshop.board.admin.controller.BoardAdminController">
+ 	</bean>
+ 	
+ 	<bean id="boardController" class="com.kshop.board.controller.BoardController">
+ 	</bean>
+ 	
+ 	<bean id="mainController" class="com.kshop.shop.controller.MainController">
+ 	</bean>
+ 	
+ 	<bean id="itemAdminController" class="com.kshop.shop.admin.controller.ItemAdminController">
+ 	</bean>
+ 	<bean id="memberAdminController" class="com.kshop.shop.admin.controller.MemberAdminController">
+ 	</bean>
+ 	<bean id="saleAdminController" class="com.kshop.shop.admin.controller.SaleAdminController">
+ 	</bean>
+ 	<bean id="saleItemAdminController" class="com.kshop.shop.admin.controller.SaleItemAdminController">
+ 	</bean>
+ 	
+
+
+<!-- DAO -->
+	<bean id="baordDao" class="com.kshop.board.model.BaordDao">
+	</bean>
+	
+	<bean id="shopDao" class="com.kshop.shop.model.ShopDao">
+	</bean>
+	
+	
+	<!-- ViewResolver-->
+	
+	<bean 
+	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/"/>
+		<property name="suffix" value=".jsp"/>
+		<property name="order" value="2"  />
+	</bean>
+	
+	 
+	
+	
+	
+	
+	
+	
+	<!-- File Up/Down Setting -->
+	
+	
+	
+	
+	<!-- Tiles Setting -->
+		<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles/tiles.xml</value>
+			</list>
+		</property>
+		<property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles2.SpringBeanPreparerFactory"/>
+	</bean>
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver"> 
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
+		<property name="order" value="1"  /> 
+	</bean>
+			
+	
+	
+	<!-- DB Setting -->
+	<!-- 
+	<bean id="sqlMapClientTemplate" 
+		class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+		<property name="sqlMapClient" ref="sqlMapClient"/>
+	</bean>
+	
+	<bean id="sqlMapClient" 
+		class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="dataSource" ref="springDataSource"/>
+		<property name="configLocation" value="/WEB-INF/SqlMapConfig.xml"/>
+	</bean>
+	
+	<bean id="springDataSource" 
+		class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="jdbc/oracle"/>
+		<property name="resourceRef" value="true"/>
+	</bean>
+	
+	
+	
+	
+-->	
+	
+	
+</beans>
