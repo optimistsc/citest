@@ -1,0 +1,93 @@
+<HTML>
+    <HEAD>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title></title>
+        <script type="text/javascript">
+            var arrInput = new Array(0); // 기본 카운터
+            var arrInputValue = new Array(0);
+            var arrfgift_nm = new Array(0);
+            var arrqnt_cnt = new Array(0);
+            
+            // 업데이트 모드 일시  onLoad를 시켜 자료를 넣어줌
+            function addDbInput(){
+                for (i = 0; i < 5; i++) {
+                    arrInput[i] = i;
+                    arrfgift_nm[i] = "test";
+                    arrqnt_cnt[i] = "100";
+                }
+                addInput();
+            }
+            
+            // 한 행을 추가 하는 기능
+            function addInput(){
+                //arrInput.push(createInput(arrInput.length));
+                arrInput.push(arrInput.length);
+                //arrInputValue.push(arrInputValue.length);
+                arrInputValue.push("");
+                arrfgift_nm.push("");
+                arrqnt_cnt.push("");
+                display();
+            }
+            
+            // 저장했던 값을 출력
+            function display(){
+                document.getElementById('parah').innerHTML = "";
+                for (intI = 0; intI < arrInput.length; intI++) {
+                    document.getElementById('parah').innerHTML += createInput(arrInput[intI], arrInputValue[intI], arrfgift_nm[intI], arrqnt_cnt[intI]);
+                }
+            }
+            
+            // input의 내용을 저장
+            function saveValue(intId, strValue){
+                arrInputValue[intId] = strValue;
+                //arrfgift_nm[intId] = strValue;
+            }
+            
+            function saveValue2(intId, strValue){
+                // arrInputValue[intId] = strValue;
+                arrfgift_nm[intId] = strValue;
+            }
+            
+            function saveValue3(intId, strValue){
+                // arrInputValue[intId] = strValue;
+                arrqnt_cnt[intId] = strValue;
+            }
+            
+            // html 생성하는 곳 
+            function createInput(id, value, value2, value3){
+                //var input = "<input type='text' id='test_" + id + "' onChange='javascript:saveValue(" + id + ",this.value)' value='" + value + "'>";
+                //	input += "<a href='#' onclick='del("+id+")'>del</a><br>";
+                //   return input;
+                var cnt = id + 1;
+                var input = "순위:<input type='text' style='width:15px;' class='text' name='rank" + id + "' id='rank" + id + "' value='" + cnt + "'> ";
+                input += "<input type='text' class='text' onChange='javascript:saveValue2(" + id + ",this.value)' style='width:110px;' id='fgift_nm" + id + "' name='fgift_nm" + id + "' value='" + value2 + "' />";
+                input += " <input type='text' id='qnt_cnt" + id + "' name='qnt_cnt" + id + "' onChange='javascript:saveValue3(" + id + ",this.value)' class='text right' style='width:80px;' value='" + value3 + "' /> 개&nbsp; <br>";
+                return input;
+                
+                
+            }
+            
+            
+            // 행 삭제
+            function deleteInput(){
+                if (arrInput.length > 0) {
+                    arrInput.pop();
+                    // arrInputValue.pop();
+                    arrfgift_nm.pop();
+                    arrqnt_cnt.pop();
+                }
+                display();
+            }
+            
+        </script>
+    </HEAD>
+    <BODY onload="addDbInput()">
+        <form id="test" name="test">
+            <p id="parah">
+                입력항목을 추가해주세요.
+            </p>
+            <a href="javascript:addInput()">입력폼 추가</a>
+            |<a href="javascript:deleteInput()">입력폼 삭제</a>
+        </form>
+    </BODY>
+</HTML>
