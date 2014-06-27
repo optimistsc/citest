@@ -23,7 +23,13 @@
  	</bean>
  	
  	<bean id="mainController" class="com.kshop.shop.controller.MainController">
+ 		<property name="dao" ref="loginDao"/>
  	</bean>
+ 	<!--  -->
+ 	<bean id="loginDao" class="com.kshop.shop.model.LoginDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"/>
+	</bean>
+
  	
  	<bean id="itemAdminController" class="com.kshop.shop.admin.controller.ItemAdminController">
  	</bean>
@@ -34,15 +40,16 @@
  	<bean id="saleItemAdminController" class="com.kshop.shop.admin.controller.SaleItemAdminController">
  	</bean>
  	
+ 	
 
 
 <!-- DAO -->
-	<bean id="baordDao" class="com.kshop.board.model.BaordDao">
+	<bean id="boardDao" class="com.kshop.board.model.BoardDao">
 	</bean>
 	
 	<bean id="shopDao" class="com.kshop.shop.model.ShopDao">
 	</bean>
-	
+
 	
 	<!-- ViewResolver-->
 	
@@ -83,28 +90,22 @@
 	
 	
 	<!-- DB Setting -->
-	<!-- 
-	<bean id="sqlMapClientTemplate" 
-		class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+	
+	<bean id="sqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
 		<property name="sqlMapClient" ref="sqlMapClient"/>
+		
 	</bean>
-	
-	<bean id="sqlMapClient" 
-		class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
 		<property name="dataSource" ref="springDataSource"/>
-		<property name="configLocation" value="/WEB-INF/SqlMapConfig.xml"/>
+		<property name="configLocation" value="/WEB-INF/SqlMapConfig.xml"></property>
 	</bean>
 	
-	<bean id="springDataSource" 
-		class="org.springframework.jndi.JndiObjectFactoryBean">
+	<bean id="springDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
 		<property name="jndiName" value="jdbc/oracle"/>
 		<property name="resourceRef" value="true"/>
 	</bean>
+ 	
 	
-	
-	
-	
--->	
-	
+
 	
 </beans>
