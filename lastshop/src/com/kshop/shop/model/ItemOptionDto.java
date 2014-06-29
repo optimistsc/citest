@@ -3,7 +3,6 @@ package com.kshop.shop.model;
 public class ItemOptionDto {
 	
 	private int opt_code;
-	private int item_code;
 	private String item_size;
 	private String item_color;
 	private int item_ea;
@@ -13,12 +12,6 @@ public class ItemOptionDto {
 	}
 	public void setOpt_code(int opt_code) {
 		this.opt_code = opt_code;
-	}
-	public int getItem_code() {
-		return item_code;
-	}
-	public void setItem_code(int item_code) {
-		this.item_code = item_code;
 	}
 	public String getItem_size() {
 		return item_size;
