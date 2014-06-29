@@ -30,8 +30,13 @@
 		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"/>
 	</bean>
 
+	<bean id="itemDao" class="com.kshop.shop.model.ItemDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"/>
+	</bean>
+
  	
  	<bean id="itemAdminController" class="com.kshop.shop.admin.controller.ItemAdminController">
+ 		<property name="itemDao" ref="itemDao"/>
  	</bean>
  	<bean id="memberAdminController" class="com.kshop.shop.admin.controller.MemberAdminController">
  	</bean>
