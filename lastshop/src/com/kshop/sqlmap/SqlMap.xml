@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Kshop">
+	<typeAlias alias="Member" type="com.kshop.shop.model.MemberDto"/>
+	<typeAlias alias="Category1" type="com.kshop.shop.model.Fir_CategoryDto"/>
+	<typeAlias alias="Category2" type="com.kshop.shop.model.Sec_CategoryDto"/>
+	<typeAlias alias="Category3" type="com.kshop.shop.model.Thr_CategoryDto"/>
+
+  <!-- Use type aliases to avoid typing the full classname every time. -->
+
+  
+
+  <!-- Result maps describe the mapping between the columns returned
+       from a query, and the class properties.  A result map isn't
+       necessary if the columns (or aliases) match to the properties 
+       exactly. -->
+ <select id="getFir_Category" resultClass="Category1">
+  select *
+  from fir_category
+ </select>
+ 
+  <select id="getSec_Category" resultClass="Category2">
+  select *
+  from sec_category
+ </select>
+ 
+  <select id="getThr_Category" resultClass="Category3">
+  select *
+  from thr_category
+ </select>
+
+ <select id="userinfo" parameterClass="java.util.Map"  resultClass="Member">
+  select *
+  from member
+  where id = #id# and pw = #pass#
+ </select> 
+
+</sqlMap>
