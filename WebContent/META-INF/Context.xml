@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
+	<!-- session exception발생 막기 위한 구문 -->
+	<Manager className="org.apache.catalina.session.StandardManager" pathname=""/> 
     <Resource
         name="jdbc/oracle"
         auth="Container"

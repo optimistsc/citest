@@ -87,55 +87,55 @@
 </head>
 <body onload="addInput()">
 <div align="center">
-<form action="item_insert.do" method="post">
+<form action="../item_insert.do" method="post">
 <table>
 	<tr>
 		<td width="150">상품기본코드</td>
-		<td><input type="text" id="ITEM_CODE" name="ITEM_CODE" maxlength="6"></td>
+		<td><input type="text" id="item_code" name="item_code" maxlength="6"></td>
 	</tr>
 	<tr>
 		<td>상품명</td>
-		<td><input type="text" id="ITEM_NAME" name="ITEM_NAME" maxlength="50"></td>
+		<td><input type="text" id="item_name" name="item_name" maxlength="50"></td>
 	</tr>
 	<tr>
 		<td>제조사</td>
-		<td><input type="text" id="COMPANY" name="COMPANY" maxlength="10"></td>
+		<td><input type="text" id="company" name="company" maxlength="10"></td>
 	</tr>
 	<tr>
 		<td>제조국</td>
-		<td><input type="text" id="COUNTRY" name="COUNTRY" maxlength="10"></td>
+		<td><input type="text" id="country" name="country" maxlength="10"></td>
 	</tr>
 	<tr>
 		<td>브랜드</td>
-		<td><input type="text" id="BRAND" name="BRAND" maxlength="15"></td>
+		<td><input type="text" id="brand" name="brand" maxlength="15"></td>
 	</tr>
 	<tr>
 		<td>수입여부</td>
-		<td><input type="text" id="IMPORTATION" name="IMPORTATION" maxlength="2"></td>
+		<td><input type="text" id="importation" name="importation" maxlength="2"></td>
 	</tr>
 	<tr>
 		<td>제품소재</td>
-		<td><input type="text" id="METERIAL" name="METERIAL" maxlength="15"></td>
+		<td><input type="text" id="meterial" name="meterial" maxlength="15"></td>
 	</tr>
 	<tr>
 		<td>취급주의</td>
-		<td><input type="text" id="ATTENTION" name="ATTENTION" maxlength="1000"></td>
+		<td><input type="text" id="attention" name="attention" maxlength="1000"></td>
 	</tr>
 	<tr>
 		<td>판매가격</td>
-		<td><input type="text" id="PRICE" name="PRICE" maxlength="9"></td>
+		<td><input type="text" id="price" name="price" maxlength="9"></td>
 	</tr>
 	<tr>
 		<td>작은사진</td>
-		<td><input type="text" id="S_PICTURE" name="S_PICTURE" maxlength="500"></td>
+		<td><input type="text" id="s_picture" name="s_picture" maxlength="500"></td>
 	</tr>
 	<tr>
 		<td>큰사진</td>
-		<td><input type="text" id="B_PICTURE" name="B_PICTURE" maxlength="500"></td>
+		<td><input type="text" id="b_picture" name="b_picture" maxlength="500"></td>
 	</tr>
 	<tr>
 		<td>3차카테고리번호</td>
-		<td><input type="text" id="THR_CODE" name="THR_CODE" maxlength="5"></td>
+		<td><input type="text" id="thr_code" name="thr_code" maxlength="5"></td>
 	</tr>
 </table>
 

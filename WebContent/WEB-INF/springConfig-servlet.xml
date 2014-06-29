@@ -24,19 +24,14 @@
  	
  	<bean id="mainController" class="com.kshop.shop.controller.MainController">
  		<property name="dao" ref="loginDao"/>
+ 		<property name="categories" ref="categoryDao"/>
  	</bean>
+ 	
  	<!--  -->
- 	<bean id="loginDao" class="com.kshop.shop.model.LoginDao">
-		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"/>
-	</bean>
-
-	<bean id="itemDao" class="com.kshop.shop.model.ItemDao">
-		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"/>
-	</bean>
+ 	
 
  	
  	<bean id="itemAdminController" class="com.kshop.shop.admin.controller.ItemAdminController">
- 		<property name="itemDao" ref="itemDao"/>
  	</bean>
  	<bean id="memberAdminController" class="com.kshop.shop.admin.controller.MemberAdminController">
  	</bean>
@@ -54,7 +49,18 @@
 	
 	<bean id="shopDao" class="com.kshop.shop.model.ShopDao">
 	</bean>
+	
+	<bean id="itemDao" class="com.kshop.shop.model.ItemDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"/>
+	</bean>
 
+	<bean id="loginDao" class="com.kshop.shop.model.LoginDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"/>
+	</bean>
+	
+	<bean id="categoryDao" class="com.kshop.shop.model.CategoryDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"/>
+	</bean>
 	
 	<!-- ViewResolver-->
 	
