@@ -87,7 +87,7 @@
 </head>
 <body onload="addInput()">
 <div align="center">
-<form action="" method="post">
+<form action="item_insert.do" method="post">
 <table>
 	<tr>
 		<td width="150">상품기본코드</td>
@@ -153,6 +153,7 @@
 	<tr>
 		<td colspan="2" align="center">
 		<input type="button" id="plus" name="plus" value="등록" onclick="register()">
+		<input type="submit" value="등록0">
 		<input type="button" id="minus" name="minus" value="취소" onclick="cancel()">
 		</td>
 	</tr>
