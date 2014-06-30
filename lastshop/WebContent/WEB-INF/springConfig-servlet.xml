@@ -32,12 +32,20 @@
 
  	
  	<bean id="itemAdminController" class="com.kshop.shop.admin.controller.ItemAdminController">
+ 		<property name="itemServiceImpl" ref="itemServiceImpl"/>
  	</bean>
  	<bean id="memberAdminController" class="com.kshop.shop.admin.controller.MemberAdminController">
  	</bean>
  	<bean id="saleAdminController" class="com.kshop.shop.admin.controller.SaleAdminController">
  	</bean>
  	<bean id="saleItemAdminController" class="com.kshop.shop.admin.controller.SaleItemAdminController">
+ 	</bean>
+ 	
+ 	
+ 	<!-- Service -->
+ 	
+ 	<bean id="itemServiceImpl" class="com.kshop.shop.service.ItemServiceImpl">
+ 		<property name="itemDao" ref="itemDao"/>
  	</bean>
  	
  	

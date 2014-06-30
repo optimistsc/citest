@@ -9,6 +9,8 @@
 	<typeAlias alias="Category1" type="com.kshop.shop.model.Fir_CategoryDto"/>
 	<typeAlias alias="Category2" type="com.kshop.shop.model.Sec_CategoryDto"/>
 	<typeAlias alias="Category3" type="com.kshop.shop.model.Thr_CategoryDto"/>
+	<typeAlias alias="itemDto" type="com.kshop.shop.model.ItemDto"/>
+	<typeAlias alias="itemOptionDto" type="com.kshop.shop.model.ItemOptionDto"/>
 
   <!-- Use type aliases to avoid typing the full classname every time. -->
 
@@ -31,12 +33,28 @@
   <select id="getThr_Category" resultClass="Category3">
   select *
   from thr_category
+  order by thr_name
  </select>
 
  <select id="userinfo" parameterClass="java.util.Map"  resultClass="Member">
   select *
   from member
   where id = #id# and pw = #pass#
+ </select>
+ 
+ <insert id="itemDtoInsert" parameterClass="itemDto">
+  insert into item_info (item_code, item_name, company, country, brand, importation, meterial, attention, price, s_picture, b_picture, thr_code)
+  values(item_code_seq.nextval, #item_name#, #company#, #country#, #brand#, #importation#, #meterial#, #attention#, #price#, #s_picture#, #b_picture#, #thr_code#)
+ </insert>
+  
+ <insert id="optionDtoInsert" parameterClass="itemOptionDto">
+  insert into item_option (opt_code, item_code, item_size, item_color, item_ea)
+  values(#opt_code#, #ref_code#, #item_size#, #item_color#, #item_ea#)
+ </insert>
+ 
+ <select id="nowRefItemcode" resultClass="int">
+  select item_code_seq.currval
+  from dual
  </select> 
 
 </sqlMap>

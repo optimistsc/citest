@@ -37,9 +37,7 @@
 	function saveData(name, num, value){
 		var nlen = name.length;
 		var iname = name.substring(nlen-3, nlen);
-		if(iname == "ode") {
-			opt_code[num] = value;
-		} else if(iname == "ize") {
+		if(iname == "ize") {
 			item_size[num] = value;
 		} else if(iname == "lor") {
 			item_color[num] = value;
@@ -52,7 +50,7 @@
 	function createInput(box, opt_code, item_size, item_color, item_ea){
 		var boxHtml = "<tr><td colspan='2'><hr></td></tr>";
 		boxHtml += "<tr><td width='150'>상세코드</td>";
-		boxHtml += "<td><input type='text' maxlength='3' id='list[" + box + "].opt_code' name='list[" + box + "].opt_code' value='" + opt_code + "' onchange='saveData(this.name, " + box + ", this.value)'></td></tr>";
+		boxHtml += "<td><input type='text' maxlength='3' id='list[" + box + "].opt_code' name='list[" + box + "].opt_code' value='" + (box+1) + "' readonly='readonly'></td></tr>";
 		boxHtml += "<tr><td>사이즈</td>";
 		boxHtml += "<td><input type='text' maxlength='5' id='list[" + box + "].item_size' name='list[" + box + "].item_size' value='" + item_size + "' onchange='saveData(this.name, " + box + ", this.value)'></td></tr>";
 		boxHtml += "<tr><td>색상</td>";
@@ -90,10 +88,6 @@
 <form action="../item_insert.do" method="post">
 <table>
 	<tr>
-		<td width="150">상품기본코드</td>
-		<td><input type="text" id="item_code" name="item_code" maxlength="6"></td>
-	</tr>
-	<tr>
 		<td>상품명</td>
 		<td><input type="text" id="item_name" name="item_name" maxlength="50"></td>
 	</tr>
@@ -111,7 +105,13 @@
 	</tr>
 	<tr>
 		<td>수입여부</td>
-		<td><input type="text" id="importation" name="importation" maxlength="2"></td>
+		<td>
+		<!-- <input type="text" id="importation" name="importation" maxlength="2"> -->
+		<select id="importation" name="importation">
+			<option value="국산">국산</option>
+			<option value="수입">수입</option>
+		</select>
+		</td>
 	</tr>
 	<tr>
 		<td>제품소재</td>
@@ -134,8 +134,14 @@
 		<td><input type="text" id="b_picture" name="b_picture" maxlength="500"></td>
 	</tr>
 	<tr>
-		<td>3차카테고리번호</td>
-		<td><input type="text" id="thr_code" name="thr_code" maxlength="5"></td>
+		<td width="150">3차카테고리</td>
+		<td>
+		<select id="thr_code" name="thr_code"><!-- 3차 카테고리 갯수만큼 출력 -->
+			<c:forEach var="ThirdCategoryDto" items="${categoryList }">
+				<option value="${ThirdCategoryDto.thr_code }">${ThirdCategoryDto.thr_name }</option>
+			</c:forEach>
+		</select>
+		</td>
 	</tr>
 </table>
 
@@ -152,8 +158,7 @@
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
-		<input type="button" id="plus" name="plus" value="등록" onclick="register()">
-		<input type="submit" value="등록0">
+		<input type="submit" value="등록">
 		<input type="button" id="minus" name="minus" value="취소" onclick="cancel()">
 		</td>
 	</tr>
