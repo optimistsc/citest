@@ -2,6 +2,14 @@ package com.kshop.shop.model;
 
 public class ItemOptionDto {
 	
+	private int ref_code;
+	
+	public int getRef_code() {
+		return ref_code;
+	}
+	public void setRef_code(int ref_code) {
+		this.ref_code = ref_code;
+	}
 	private int opt_code;
 	private String item_size;
 	private String item_color;
