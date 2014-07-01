@@ -85,7 +85,7 @@
 </head>
 <body onload="addInput()">
 <div align="center">
-<form action="../item_insert.do" method="post">
+<form action="${pageContext.request.contextPath}/item_insert.do" method="post">
 <table>
 	<tr>
 		<td>ªÛ«∞∏Ì</td>

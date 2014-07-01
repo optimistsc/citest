@@ -7,6 +7,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="${pageContext.request.contextPath}/item_insert.do">등록으로 이동</a>
+<form action="${pageContext.request.contextPath}/file.do">
+<table>
+	<tr>
+		<td>파일</td>
+		<td>
+		<input type="file" name="file" id="file">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2"><input type="submit" value="등록"></td>
+	</tr>
+</table>
+</form>
+<img alt="" src="ftp://211.177.79.92/123.png">
 </body>
 </html>

@@ -9,10 +9,10 @@
         maxActive="100" 
         maxIdle="30"		
         maxWait="10000"  
-        username="kshop"
-        password="1234"
+        username="soo"
+        password="soo"
         type="javax.sql.DataSource"
-        url="jdbc:oracle:thin:@180.233.229.139:1521:orcl" />
+        url="jdbc:oracle:thin:@211.177.79.92:1521:soovm" />
 </Context>
 
  	<!-- maxActive="100"  DB최대연결갯수 -->
