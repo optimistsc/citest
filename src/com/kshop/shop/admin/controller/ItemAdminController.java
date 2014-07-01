@@ -20,6 +20,7 @@ public class ItemAdminController {
 
 	@RequestMapping(value="item_insert.do", method=RequestMethod.GET)
 	public ModelAndView itemInsertMove(){
+		System.out.println("°Ù¸Þ¼Òµå");
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("categoryList", itemServiceImpl.getThr_Category());
 		mv.setViewName("/item/addItem");
@@ -33,6 +34,13 @@ public class ItemAdminController {
 	
 	@RequestMapping("itemlist.do")
 	public ModelAndView itemlist (){
+		ModelAndView mav = new ModelAndView();
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="file.do", method=RequestMethod.POST)
+	public ModelAndView fileupload (){
 		ModelAndView mav = new ModelAndView();
 		
 		return mav;
