@@ -7,10 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/file.do">
+<form action="${pageContext.request.contextPath}/file.do" method="post" enctype="multipart/form-data">
 <table>
 	<tr>
-		<td>파일</td>
+		<td>작은사진</td>
+		<td>
+		<input type="file" name="file" id="file">
+		</td>
+	</tr>
+	<tr>
+		<td>큰사진</td>
 		<td>
 		<input type="file" name="file" id="file">
 		</td>
