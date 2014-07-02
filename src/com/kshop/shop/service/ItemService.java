@@ -2,10 +2,7 @@ package com.kshop.shop.service;
 
 import java.util.List;
 
-import com.kshop.shop.model.ItemDto;
-import com.kshop.shop.model.ItemFileDto;
-import com.kshop.shop.model.ItemOptionDtoList;
-import com.kshop.shop.model.Thr_CategoryDto;
+import com.kshop.shop.model.*;
 
 public interface ItemService {
 
@@ -15,7 +12,7 @@ public interface ItemService {
 	
 	public List<Thr_CategoryDto> getThr_Category();
 	
-	public String fileUpload(ItemFileDto itemFileDto) throws Exception;
+	public String fileUpload(UploadFileDto uploadFileDto) throws Exception;
 
 	
 }

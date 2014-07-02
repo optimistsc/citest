@@ -51,9 +51,9 @@ public class ItemAdminController {
 	}
 	
 	@RequestMapping(value="file.do", method=RequestMethod.POST)
-	public ModelAndView fileupload (ItemFileDto itemFileDto) throws Exception{
+	public ModelAndView fileupload (UploadFileDto uploadFileDto) throws Exception{
 		ModelAndView mav = new ModelAndView();
-		itemServiceImpl.fileUpload(itemFileDto);
+		itemServiceImpl.fileUpload(uploadFileDto);
 		return mav;
 	}
 	

@@ -2,11 +2,7 @@ package com.kshop.shop.service;
 
 import java.util.List;
 
-import com.kshop.shop.model.ItemDao;
-import com.kshop.shop.model.ItemDto;
-import com.kshop.shop.model.ItemFileDto;
-import com.kshop.shop.model.ItemOptionDtoList;
-import com.kshop.shop.model.Thr_CategoryDto;
+import com.kshop.shop.model.*;
 import com.kshop.util.FileUpload;
 
 public class ItemServiceImpl implements ItemService {
@@ -46,10 +42,10 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public String fileUpload(ItemFileDto itemFileDto) throws Exception {
+	public String fileUpload(UploadFileDto uploadFileDto) throws Exception {
 		String path = "";
 		
-		path = fileUpload.fileUpload(itemFileDto);
+		List<UploadFileDto> list = fileUpload.fileUpload(uploadFileDto);
 		
 		return path;
 	}
