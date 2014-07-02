@@ -43,15 +43,18 @@
  	
  	
  	<!-- Service -->
+	
+	<bean id="fileUpload" class="com.kshop.util.FileUpload">
+    	<property name="destinationDir" value="c:/kshoptemp" />
+	</bean>
  	
  	<bean id="itemServiceImpl" class="com.kshop.shop.service.ItemServiceImpl">
  		<property name="itemDao" ref="itemDao"/>
- 	</bean>
- 	
- 	
+ 		<property name="fileUpload" ref="fileUpload"/>
+ 	</bean> 	
 
 
-<!-- DAO -->
+	<!-- DAO -->
 	<bean id="boardDao" class="com.kshop.board.model.BoardDao">
 	</bean>
 	
