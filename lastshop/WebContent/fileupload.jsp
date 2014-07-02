@@ -26,6 +26,6 @@
 	</tr>
 </table>
 </form>
-<img alt="" src="ftp://211.177.79.92/123.png">
+<img alt="" src="ftp://192.168.0.200/123.png">
 </body>
 </html>
