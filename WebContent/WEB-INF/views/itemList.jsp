@@ -12,6 +12,7 @@
 <title>상품 목록</title>
 <script type="text/javascript" src="<%=root%>/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=root%>/js/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="<%=application.getContextPath()%>/js/jquery-1.8.2.js"></script>
 <link href="<%=root%>/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link href="<%=root%>/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
 <link href="<%=root%>/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
@@ -38,9 +39,20 @@ $(window).on('load', function ()
 		 	});
 		});
 
-
 </script>
+<script type="text/javascript">
 
+$().ready(
+		function(){
+			$("tr#bolist").hover(function(){
+				$(this).css("background", "#ffffcc !important");
+				$(this).click(function(){window.location.href=$(this).find("a").attr("href");
+				});
+			}, function() {
+				$(this).css("background", " !important");
+			});
+		});
+</script>
 
 </head>
 <body>
@@ -64,7 +76,7 @@ $(window).on('load', function ()
 <c:when test="${!empty itemList }">
 <c:forEach var="itemDto" items="${itemList }">
 	<tbody>
-		<tr>
+		<tr id="bolist">
 		<td>${itemDto.opt_code }</td>
 		<td><a href="${pageContext.request.contextPath}/item_modify.do?opt_code=${itemDto.opt_code }">${itemDto.item_name }</a></td>
 		<td>${itemDto.item_color }</td>
