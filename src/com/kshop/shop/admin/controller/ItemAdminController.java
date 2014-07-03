@@ -3,6 +3,7 @@ package com.kshop.shop.admin.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kshop.shop.model.ItemDto;
@@ -32,20 +33,16 @@ public class ItemAdminController {
 	public ModelAndView itemInsertAction(ItemDto itemDto, ItemOptionDtoList list, UploadFileDto uploadFileDto) throws Exception{
 		return new ModelAndView("redirect:" + itemServiceImpl.itemInsert(itemDto, list, uploadFileDto));
 	}
-	
-	@RequestMapping("test1.do")
-	public ModelAndView test1 (){
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("test1");
-		return mav;
+
+	@RequestMapping(value="item_modify.do", method=RequestMethod.GET)
+	public ModelAndView itemModifyMove(@RequestParam int opt_code){
+		System.out.println(opt_code);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("categoryList", itemServiceImpl.getThr_Category());
+		mv.setViewName("/item/addItem.tiles");
+		return mv;
 	}
 	
-	@RequestMapping("itemlist.do")
-	public ModelAndView itemlist (){
-		ModelAndView mav = new ModelAndView();
-		
-		
-		return mav;
-	}
+
 
 }
