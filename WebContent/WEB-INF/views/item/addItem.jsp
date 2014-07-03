@@ -50,7 +50,7 @@
 	function createInput(box, opt_code, item_size, item_color, item_ea){
 		var boxHtml = "<tr><td colspan='2'><hr></td></tr>";
 		boxHtml += "<tr><td width='150'>상세코드</td>";
-		boxHtml += "<td><input type='text' maxlength='3' id='list[" + box + "].opt_code' name='list[" + box + "].opt_code' value='" + (box+1) + "' readonly='readonly'></td></tr>";
+		boxHtml += "<td width='250'><input type='text' maxlength='3' id='list[" + box + "].opt_code' name='list[" + box + "].opt_code' value='" + (box+1) + "' readonly='readonly'></td></tr>";
 		boxHtml += "<tr><td>사이즈</td>";
 		boxHtml += "<td><input type='text' maxlength='5' id='list[" + box + "].item_size' name='list[" + box + "].item_size' value='" + item_size + "' onchange='saveData(this.name, " + box + ", this.value)'></td></tr>";
 		boxHtml += "<tr><td>색상</td>";
@@ -85,7 +85,7 @@
 </head>
 <body onload="addInput()">
 <div align="center">
-<form action="${pageContext.request.contextPath}/item_insert.do" method="post">
+<form action="${pageContext.request.contextPath}/item_insert.do" method="post" enctype="multipart/form-data">
 <table>
 	<tr>
 		<td>상품명</td>
@@ -127,15 +127,15 @@
 	</tr>
 	<tr>
 		<td>작은사진</td>
-		<td><input type="text" id="s_picture" name="s_picture" maxlength="500"></td>
+		<td><input type="file" id="file" name="file"></td>
 	</tr>
 	<tr>
 		<td>큰사진</td>
-		<td><input type="text" id="b_picture" name="b_picture" maxlength="500"></td>
+		<td><input type="file" id="file" name="file"></td>
 	</tr>
 	<tr>
 		<td width="150">3차카테고리</td>
-		<td>
+		<td width="250">
 		<select id="thr_code" name="thr_code"><!-- 3차 카테고리 갯수만큼 출력 -->
 			<c:forEach var="ThirdCategoryDto" items="${categoryList }">
 				<option value="${ThirdCategoryDto.thr_code }">${ThirdCategoryDto.thr_name }</option>

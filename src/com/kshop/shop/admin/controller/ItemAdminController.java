@@ -1,22 +1,13 @@
 package com.kshop.shop.admin.controller;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kshop.shop.model.*;
+import com.kshop.shop.model.ItemDto;
+import com.kshop.shop.model.ItemOptionDtoList;
+import com.kshop.shop.model.UploadFileDto;
 import com.kshop.shop.service.ItemServiceImpl;
 
 //관리자 컨트롤러 (상품 등록, 검색, 수정, 삭제, 리스트 관련)
@@ -31,7 +22,6 @@ public class ItemAdminController {
 
 	@RequestMapping(value="item_insert.do", method=RequestMethod.GET)
 	public ModelAndView itemInsertMove(){
-		System.out.println("겟메소드");
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("categoryList", itemServiceImpl.getThr_Category());
 		mv.setViewName("/item/addItem");
@@ -39,8 +29,8 @@ public class ItemAdminController {
 	}
 
 	@RequestMapping(value="item_insert.do", method=RequestMethod.POST)
-	public ModelAndView itemInsertAction(ItemDto itemDto, ItemOptionDtoList list){
-		return new ModelAndView(itemServiceImpl.itemInsert(itemDto, list));
+	public ModelAndView itemInsertAction(ItemDto itemDto, ItemOptionDtoList list, UploadFileDto uploadFileDto) throws Exception{
+		return new ModelAndView(itemServiceImpl.itemInsert(itemDto, list, uploadFileDto));
 	}
 	
 	@RequestMapping("itemlist.do")
@@ -53,7 +43,6 @@ public class ItemAdminController {
 	@RequestMapping(value="file.do", method=RequestMethod.POST)
 	public ModelAndView fileupload (UploadFileDto uploadFileDto) throws Exception{
 		ModelAndView mav = new ModelAndView();
-		itemServiceImpl.fileUpload(uploadFileDto);
 		return mav;
 	}
 	

@@ -10,7 +10,7 @@ public class FtpInfo {
      * @param files      ¾÷·Îµålist
      * @return
      */
-	public final static String IP = "192.168.0.200";
+	public final static String IP = "211.177.79.92";
 	public final static int PORT = 21;
 	public final static String ID = "admin";
 	public final static String PWD = "kshop1234";

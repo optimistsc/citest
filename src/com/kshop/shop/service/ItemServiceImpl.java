@@ -26,8 +26,11 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public String itemInsert(ItemDto itemDto, ItemOptionDtoList list) {
+	public String itemInsert(ItemDto itemDto, ItemOptionDtoList list, UploadFileDto uploadFileDto) throws Exception {
 		String viewName = "";
+		List<UploadFileDto> fdList = fileUpload.fileUpload(uploadFileDto);
+		itemDto.setS_picture(fdList.get(0).getFilePath());
+		itemDto.setB_picture(fdList.get(1).getFilePath());
 		if(itemDao.itemInsert(itemDto, list)) {
 			viewName = "itemInsertSuccess";
 		} else {
@@ -39,15 +42,6 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public List<Thr_CategoryDto> getThr_Category() {
 		return itemDao.getThr_Category();
-	}
-
-	@Override
-	public String fileUpload(UploadFileDto uploadFileDto) throws Exception {
-		String path = "";
-		
-		List<UploadFileDto> list = fileUpload.fileUpload(uploadFileDto);
-		
-		return path;
 	}
 
 }
