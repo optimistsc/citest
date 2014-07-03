@@ -5,17 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<style type="text/css">
-#bottom{ clear: both;
-				width: 980px;
-				
-				margin: 0 auto;
-				text-align: center;
-				padding: 300px 0px 0px 0px;}
-</style>
+
 </head>
 <body>
-<!-- 하단! -->
-<div id="bottom">™Forward Ventures Co. ALL rights reserved.
+<center>
+<a href="${pageContext.request.contextPath}/item_list.do?pg=1&key=&word="><font size="10">리스트 가기</font></a>
+</center>
 </body>
 </html>
+

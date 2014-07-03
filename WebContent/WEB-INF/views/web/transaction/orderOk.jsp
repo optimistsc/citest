@@ -5,17 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<style type="text/css">
-#bottom{ clear: both;
-				width: 980px;
-				
-				margin: 0 auto;
-				text-align: center;
-				padding: 300px 0px 0px 0px;}
-</style>
 </head>
 <body>
-<!-- 하단! -->
-<div id="bottom">™Forward Ventures Co. ALL rights reserved.
+성공~~!!<br/><br/>
+<a href="orderForm.do">주문창으로</a>
 </body>
 </html>

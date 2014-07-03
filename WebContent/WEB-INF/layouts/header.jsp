@@ -22,17 +22,23 @@ A:visited {color:#747474; text-decoration:none; vertical-align: bottom;}/* 한번 
 	<tr>
 		<td align="right">
 		<c:choose>
-			<c:when test="${userInfo!=null}">
+			<c:when test="${sessionScope.userInfo.state eq '관리자'}">
+			<a href="logout.do"><font size="2">로그아웃(${sessionScope.userInfo.name })</a> |
+			<a href="adminpage.do">관리자페이지</a> |
+			장바구니 |
+			주문조회 |
+			고객센터 
+			</c:when>
+			<c:when test="${sessionScope.userInfo.state eq '회원'}">
 			<a href="logout.do"><font size="2">로그아웃(${sessionScope.userInfo.name })</a> |
 			<a href="mypage.do">마이페이지</a> |
 			장바구니 |
 			주문조회 |
-			고객센터 
-			
+			고객센터
 			</c:when>
 			<c:when test="${userInfo==null}">
 			<a href="login.do"><font size="2">로그인</a> |
-			회원가입 |
+			<a href="mypage.do">회원가입</a> |
 			비회원주문조회 |
 			고객센터 
 			</font>
@@ -54,24 +60,22 @@ A:visited {color:#747474; text-decoration:none; vertical-align: bottom;}/* 한번 
 
 
 <ul id="menu">
-<c:forEach var="category1" items="${category1}">
+	<c:forEach var="category1" items="${category1}">
 	<li> 
-        <a href="#">${category1.fir_name}</a>
+        <a href="salelist1.do?category1=${category1.fir_code} ">${category1.fir_name}</a>
         <ul>
         <c:forEach var="category2" items="${category2}">
         	<c:if test="${ category1.fir_code == category2.fir_code }">
-        		<li><a href="#">${category2.sec_name}</a>
+        		<li><a href="salelist2.do?category1=${category1.fir_code}&category2=${category2.sec_code}">${category2.sec_name}</a>
         		 	<ul>
 	       			<c:forEach var="category3" items="${category3}">
 	        			<c:if test="${ category2.sec_code == category3.sec_code }">
-	        				<li><a href="#">${category3.thr_name}</a></li>
+	        				<li><a href="salelist3.do?category1=${category1.fir_code}&category2=${category2.sec_code}&category3=${category3.thr_code}">${category3.thr_name}</a></li>
 	        			</c:if>     	
 		        	</c:forEach>
 	       		 	</ul>
         		</li>
         	</c:if>     	
-       		
-        	
         </c:forEach>
         </ul>
     </c:forEach>

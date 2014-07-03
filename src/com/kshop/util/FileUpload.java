@@ -8,8 +8,6 @@ import org.apache.commons.net.ftp.*;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.kshop.shop.model.UploadFileDto;
-
 public class FileUpload {
 	
 	private File destinationDir;
@@ -55,7 +53,6 @@ public class FileUpload {
 	        try {
 	            ftp = new FTPClient();
 	            ftp.connect(FtpInfo.IP, FtpInfo.PORT);
-	            System.out.println("Connected to " + FtpInfo.IP + " on "+ftp.getRemotePort());
 	            
 	            // After connection attempt, you should check the reply code to verify
 	            // success.

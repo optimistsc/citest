@@ -1,10 +1,10 @@
 package com.kshop.shop.model;
 
-public class MemberDto {
-	
+public class JoinDto {
+
 	 private String id;
 	 private String name;
-	 private int birth;
+	 private String birth;
 	 private String tel1;
 	 private String tel2;
 	 private String tel3;
@@ -14,12 +14,18 @@ public class MemberDto {
 	 private String addr2;
 	 private String zip1;
 	 private String zip2;
-	 private String joindate;
+	 private String join_date;
 	 private String state;
 	 private String pw;
-	 private String pwq_anser;
+	 private String pwq_answer;
 	 private String pwq_code;
 	 
+	public String getJoin_date() {
+		return join_date;
+	}
+	public void setJoin_date(String join_date) {
+		this.join_date = join_date;
+	}
 	public String getId() {
 		return id;
 	}
@@ -32,10 +38,10 @@ public class MemberDto {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getBirth() {
+	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(int birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
 	public String getTel1() {
@@ -92,12 +98,7 @@ public class MemberDto {
 	public void setZip2(String zip2) {
 		this.zip2 = zip2;
 	}
-	public String getJoindate() {
-		return joindate;
-	}
-	public void setJoindate(String joindate) {
-		this.joindate = joindate;
-	}
+	
 	public String getState() {
 		return state;
 	}
@@ -110,11 +111,11 @@ public class MemberDto {
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
-	public String getPwq_anser() {
-		return pwq_anser;
+	public String getPwq_answer() {
+		return pwq_answer;
 	}
-	public void setPwq_anser(String pwq_anser) {
-		this.pwq_anser = pwq_anser;
+	public void setPwq_answer(String pwq_answer) {
+		this.pwq_answer = pwq_answer;
 	}
 	public String getPwq_code() {
 		return pwq_code;

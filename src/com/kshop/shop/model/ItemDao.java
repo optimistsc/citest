@@ -1,19 +1,24 @@
 package com.kshop.shop.model;
 
+
+import org.springframework.orm.ibatis.SqlMapClientTemplate;
+import com.kshop.util.RequestInfoDto;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.orm.ibatis.SqlMapClientTemplate;
+
 
 public class ItemDao {
-
-	private SqlMapClientTemplate sqlMapClientTemplate;
 	
-	public void setSqlMapClientTemplate(
-			SqlMapClientTemplate sqlMapClientTemplate) {
+	private SqlMapClientTemplate sqlMapClientTemplate;
+
+
+	public void setSqlMapClientTemplate(SqlMapClientTemplate sqlMapClientTemplate) {
 		this.sqlMapClientTemplate = sqlMapClientTemplate;
 	}
+	
+	
 	
 	public MemberDto loginon(String id, String pass){
 		Map<String, String> map = new HashMap<String, String>();
@@ -48,6 +53,30 @@ public class ItemDao {
 	public List<Thr_CategoryDto> getThr_Category(){
 		List<Thr_CategoryDto> categoryList = sqlMapClientTemplate.queryForList("getThr_Category");
 		return categoryList; 
+	}
+
+	//전체 상품 리스트
+	public List<ItemDto> itemList (RequestInfoDto requestInfoDto) {
+		
+		return sqlMapClientTemplate.queryForList("itemList", requestInfoDto);
+	}
+	
+	//검색한 상품 리스트
+	public List<ItemDto> searchItem (RequestInfoDto requestInfoDto) {
+		
+		return sqlMapClientTemplate.queryForList("searchItem", requestInfoDto);
+	}
+	
+	//총 상품 수
+	public int getTotalItemArticle(){
+		
+		return (int) sqlMapClientTemplate.queryForObject("getTotalItemArticle");
+	}
+	
+	//검색한 상품의 총 수
+	public int getFindItemAreticle(RequestInfoDto requestInfoDto){
+		
+		return (int) sqlMapClientTemplate.queryForObject("getFindItemAreticle", requestInfoDto);
 	}
 
 }
