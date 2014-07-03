@@ -38,7 +38,9 @@ public class ItemAdminController {
 	public ModelAndView itemModifyMove(@RequestParam int opt_code){
 		System.out.println(opt_code);
 		ModelAndView mv = new ModelAndView();
+		
 		mv.addObject("categoryList", itemServiceImpl.getThr_Category());
+		
 		mv.setViewName("/item/addItem.tiles");
 		return mv;
 	}
