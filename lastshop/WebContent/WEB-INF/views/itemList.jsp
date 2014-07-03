@@ -66,7 +66,7 @@ $(window).on('load', function ()
 	<tbody>
 		<tr>
 		<td>${itemDto.opt_code }</td>
-		<td>${itemDto.item_name }</td>
+		<td><a href="${pageContext.request.contextPath}/item_modify.do?opt_code=${itemDto.opt_code }">${itemDto.item_name }</a></td>
 		<td>${itemDto.item_color }</td>
 		<td>${itemDto.item_size }</td>
 		<td>${itemDto.item_ea }</td>
