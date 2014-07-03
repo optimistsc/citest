@@ -2,13 +2,17 @@ package com.kshop.shop.service;
 
 import java.util.List;
 
-import com.kshop.shop.model.*;
+import com.kshop.shop.model.ItemDao;
+import com.kshop.shop.model.ItemDto;
+import com.kshop.shop.model.ItemOptionDtoList;
+import com.kshop.shop.model.Thr_CategoryDto;
 import com.kshop.util.FileUpload;
+import com.kshop.util.UploadFileDto;
 
 public class ItemServiceImpl implements ItemService {
-	
-	private ItemDao itemDao;
 
+	private ItemDao itemDao;
+	
 	public void setItemDao(ItemDao itemDao) {
 		this.itemDao = itemDao;
 	}
@@ -32,9 +36,9 @@ public class ItemServiceImpl implements ItemService {
 		itemDto.setS_picture(fdList.get(0).getFilePath());
 		itemDto.setB_picture(fdList.get(1).getFilePath());
 		if(itemDao.itemInsert(itemDto, list)) {
-			viewName = "itemInsertSuccess";
+			viewName = "/item_list.do?pg=1&key=&word=";
 		} else {
-			viewName = "itemInsertFail";
+			viewName = "/item_insert.do";
 		}
 		return viewName;
 	}

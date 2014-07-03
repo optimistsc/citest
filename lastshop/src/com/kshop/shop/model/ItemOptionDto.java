@@ -1,6 +1,6 @@
 package com.kshop.shop.model;
 
-public class ItemOptionDto {
+public class ItemOptionDto extends ItemDto{
 	
 	private int ref_code;
 	

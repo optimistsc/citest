@@ -7,10 +7,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <style type="text/css">
-        #wrapper{width:1000px;border:1px solid #eee; margin:20px auto;}
+        #wrapper{width:1000px;border:1px solid #eee; margin:0px auto;}
         #sub,#body,#sidebar{float:left;}
         #sub,#sidebar{wisth:150px;}
-        #body{width:1000px;height:800px;}
+        #body{width:1000px;height:1500px;}
         #head{height:200px;background:#fff;}
         #foot{clear:both;height:350px;background:#fff;}
 </style>

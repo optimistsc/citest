@@ -13,7 +13,7 @@
 	<typeAlias alias="itemOptionDto" type="com.kshop.shop.model.ItemOptionDto"/>
 	<typeAlias alias="RequestInfoDto" type="com.kshop.util.RequestInfoDto"/>
 	<typeAlias alias="joinInfo" type="com.kshop.shop.model.JoinDto"/>
-	<typeAlias alias="ZipDto" type="com.kshop.util.ZipDto"/>
+
 
   <!-- Use type aliases to avoid typing the full classname every time. -->
 
@@ -109,14 +109,29 @@
 	where rankk between ((#currentPage# - 1) * #lpg# + 1) and (((#currentPage# - 1) * #lpg# + 1) + #lpg# - 1)
  </select>
  
- <!-- 우편번호 검색 -->
- <select id="zipList" parameterClass="ZipDto" resultClass="ZipDto">
- 	select substr(zipcode, 1, instr(zipcode, '-')-1) zip1, substr(zipcode, instr(zipcode, 
-
-'-')+1) zip2, sido, gugun, dong, nvl(bunji, ' ') bunji
-	from zipcode
-	where dong like '%'||#dong#||'%' 
+ <!-- 회원 상품  -->
+ <select id="count1" parameterClass="int" resultClass="int">
+    select count(*)
+ 	from fir_category f, sec_category s, thr_category t,item_info i
+  	 where f.fir_code=s.fir_code and s.sec_code=t.sec_code and t.thr_code=i.thr_code
+            and f.fir_code = #category1#
+ </select>
+<select id="salelist1" parameterClass="int" resultClass="itemDto">
+	select i.item_name, i.item_code, i.price, i.s_picture, rownum
+	from fir_category f, sec_category s, thr_category t,item_info i
+	where f.fir_code=s.fir_code and s.sec_code=t.sec_code and t.thr_code=i.thr_code
+     		 and f.fir_code = #category1#
  </select>
  
+<select id="selectlist" parameterClass="int" resultClass="itemOptionDto"> 
+	select item_size, item_color, item_ea
+	from item_option
+	where item_code=#itemnum#	
+</select>
+<select id="selectitem" parameterClass="int" resultClass="itemDto"> 
+	select item_name, price, item_code, b_picture
+	from item_info
+	where item_code=#itemnum#	
+</select>
 
 </sqlMap>

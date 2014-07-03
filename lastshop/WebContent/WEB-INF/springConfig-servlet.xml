@@ -23,8 +23,12 @@
  	</bean>
  	
  	<bean id="mainController" class="com.kshop.shop.controller.MainController">
- 		<property name="dao" ref="loginDao"/>
- 		<property name="categories" ref="categoryDao"/>
+ 		<property name="dao" ref="mainDao"/>
+ 		
+ 	</bean>
+ 	
+ 	<bean id="itemController" class="com.kshop.shop.controller.ItemController">
+ 		<property name="dao" ref="itemDao"/>
  	</bean>
  	
  	<!--  -->
@@ -34,12 +38,24 @@
  	<bean id="itemAdminController" class="com.kshop.shop.admin.controller.ItemAdminController">
  		<property name="itemServiceImpl" ref="itemServiceImpl"/>
  	</bean>
+ 	
  	<bean id="memberAdminController" class="com.kshop.shop.admin.controller.MemberAdminController">
+ 		<property name="mdao" ref="memberDao"/>
  	</bean>
+ 	
  	<bean id="saleAdminController" class="com.kshop.shop.admin.controller.SaleAdminController">
  	</bean>
  	<bean id="saleItemAdminController" class="com.kshop.shop.admin.controller.SaleItemAdminController">
  	</bean>
+ 	
+ 	<bean id="orderController" class="com.kshop.shop.controller.OrderController">
+		<property name="dao" ref="orderdao"/>		
+	</bean>
+	
+ 	<bean id="saleController" class="com.kshop.shop.controller.SaleController">
+ 	    
+ 	</bean>
+ 	
  	
  	
  	<!-- Service -->
@@ -51,10 +67,11 @@
  	<bean id="itemServiceImpl" class="com.kshop.shop.service.ItemServiceImpl">
  		<property name="itemDao" ref="itemDao"/>
  		<property name="fileUpload" ref="fileUpload"/>
- 	</bean> 	
+ 	</bean>
 
 
 	<!-- DAO -->
+	
 	<bean id="boardDao" class="com.kshop.board.model.BoardDao">
 	</bean>
 	
@@ -65,14 +82,19 @@
 		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"/>
 	</bean>
 
-	<bean id="loginDao" class="com.kshop.shop.model.LoginDao">
+	<bean id="mainDao" class="com.kshop.shop.model.MainDao">
 		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"/>
 	</bean>
 	
-	<bean id="categoryDao" class="com.kshop.shop.model.CategoryDao">
+	<bean id="memberDao" class="com.kshop.shop.model.MemberDao">
 		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"/>
 	</bean>
 	
+	
+	<bean id="orderdao" class="com.kshop.shop.model.OrderDao">
+	 	<property name="iBatisTemplate" ref="sqlMapClientTemplate"/>
+	 </bean>
+
 	<!-- ViewResolver-->
 	
 	<bean 
@@ -84,6 +106,11 @@
 	
 	 
 	
+	
+	
+	
+	
+	
 	<!-- File Up/Down Setting -->
 	
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -91,6 +118,8 @@
         	<value>10000000</value>
     	</property>
 	</bean>
+	
+	
 	
 	
 	<!-- Tiles Setting -->
@@ -107,6 +136,14 @@
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
 		<property name="order" value="1"  /> 
 	</bean>
+	
+	<!-- Transaction -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="springDataSource"/>	
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 			
 	
 	
