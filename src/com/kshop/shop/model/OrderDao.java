@@ -13,14 +13,17 @@ public class OrderDao {
 		this.iBatisTemplate = iBatisTemplate;
 	}
 
+	/*
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor={Exception.class})
 	public ModelAndView order_Action(OrderDto order) throws Exception {
 		ModelAndView mav = new ModelAndView();
 
+		/*
 		if (findItem(order.getNo()).getItem_ea() < order.getAmount()) {
 			throw new Exception("재고 부족");
 		}
-
+		*/
+/*
 		addOrder(order);
 		updateItem(order);
 		
@@ -38,4 +41,5 @@ public class OrderDao {
 	public ItemOptionDto findItem(String no) {
 		return (ItemOptionDto) iBatisTemplate.queryForObject("findItem", no);
 	}
+	*/
 }

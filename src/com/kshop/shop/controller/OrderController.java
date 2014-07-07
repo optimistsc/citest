@@ -17,6 +17,16 @@ public class OrderController {
 	}
 	
 	// Transaction
+	@RequestMapping("goOrder.do")
+	public ModelAndView goOrder(OrderDto order) {
+		System.out.println(order.getColor());
+		ModelAndView mav = new ModelAndView();		
+		mav.addObject("order", order);
+		mav.setViewName("/web/transaction/OrderInfo.tiles");
+		return mav;
+	}
+	
+	/*
 	@RequestMapping("order.do")
 	public ModelAndView order_action(OrderDto order) {
 		ModelAndView mav = new ModelAndView();
@@ -31,5 +41,8 @@ public class OrderController {
 		
 		return mav;
 	}
+	*/
+	
+	
 	
 }

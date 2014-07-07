@@ -106,5 +106,11 @@ public class FileUpload {
 				
 		return list;
 	}
+	
+	public void fileDelete(UploadFileDto uploadFileDto) throws Exception{
+		
+//		TODO Auto-generated method stub
+				
+	}
 				
 }

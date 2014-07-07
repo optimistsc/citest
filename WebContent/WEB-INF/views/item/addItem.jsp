@@ -72,12 +72,8 @@
 	    display();
 	}
     
-    function register(){
-    	alert('등록');
-    }
-    
     function cancel(){
-    	alert('취소');
+    	location.href="${pageContext.request.contextPath}/item_list.do?pg=1&key=&word=";
     }
       
 </script>

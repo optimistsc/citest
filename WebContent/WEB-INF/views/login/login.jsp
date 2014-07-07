@@ -57,11 +57,13 @@
 <div id="contents">
 	<div id="left">
 	<table border="0">
+	<form method="post" action="join.do" >
 		<tr><td height="50"><pre> <font size="5" color="#eee">신규가입</font></pre></td></tr>
 		<tr><td height="20"></td></tr>
 		<tr><td width="390" height="120"><center><img src="${pageContext.request.contextPath}/resources/img/newm.jpg"></center></td></tr>
 		<tr><td height="30"></td></tr>
-		<tr><td height="125"><center><img src="${pageContext.request.contextPath}/resources/img/join.PNG"></center></td></tr>
+		<tr><td height="125"><center><input type="image" border="0" src="${pageContext.request.contextPath}/resources/img/join.PNG"></center></td></tr>
+	</form>
 	</table>
 	</div>
 	

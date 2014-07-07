@@ -40,9 +40,12 @@ public class MainDao {
 		return (List<Thr_CategoryDto>) sqlMapClientTemplate
 				.queryForList("getThr_Category");
 	}
-	
-	
+		
 	public void join(JoinDto jdto){
 		sqlMapClientTemplate.insert("join", jdto);
+	}
+	//인기상품 목록
+	public List<ItemDto> newitemlist(){
+		return (List<ItemDto>) sqlMapClientTemplate.queryForList("newitemlist");
 	}
 }

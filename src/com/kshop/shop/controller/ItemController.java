@@ -51,7 +51,7 @@ public class ItemController {
 		mav.addObject("itemList", itemList);
 		mav.addObject("page", pn.getNavigator());
 		mav.addObject("requestInfoDto",requestInfoDto);
-		mav.setViewName("itemList.tiles");
+		mav.setViewName("/item/itemList.tiles");
 //		System.out.println("상품전체조회 컨트롤러 MAV"+ mav +"\n");		
 		return mav;
 		
@@ -76,7 +76,7 @@ public class ItemController {
 		mav.addObject("itemList", itemList);
 		mav.addObject("requestInfoDto",requestInfoDto);
 		mav.addObject("page", pn.getNavigator());
-		mav.setViewName("itemList");
+		mav.setViewName("/item/itemList");
 		System.out.println("상품검색 컨트롤러 MAV"+ mav +"\n");	
 		
 		return mav;

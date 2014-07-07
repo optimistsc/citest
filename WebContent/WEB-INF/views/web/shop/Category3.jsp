@@ -3,9 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	String root = request.getContextPath();
-%>
+<% String root= request.getContextPath(); %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -18,18 +16,14 @@ img {
 }
 </style>
 <script type="text/javascript" src="<%=root%>/js/bootstrap.min.js"></script>
-<script type="text/javascript"
-	src="<%=root%>/js/bootstrap-select.min.js"></script>
-<link href="<%=root%>/css/bootstrap.min.css" rel="stylesheet"
-	media="screen">
-<link href="<%=root%>/css/bootstrap-theme.min.css" rel="stylesheet"
-	media="screen">
-<link href="<%=root%>/css/bootstrap-select.min.css" rel="stylesheet"
-	type="text/css" />
+<script type="text/javascript" src="<%=root%>/js/bootstrap-select.min.js"></script>
+<link href="<%=root%>/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="<%=root%>/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+<link href="<%=root%>/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
 
 <script type="text/javascript">
 	function goPage(pg) {
-		location.href = "${to1}.do?category1=${ca1}&pg=" + pg + "&to=${to1}";
+		location.href="${to3}.do?category1=${ca1}&category2=${ca2}&category3=${ca3}&pg="+pg+"&to=${to3}" ;
 	}
 </script>
 </head>
@@ -45,7 +39,7 @@ img {
 			width="200" />
 	</div>
 	<br>
-	<table>
+		<table>
 		<tr>
 			<c:forEach var="bitem" items="${blist }">
 				<td>
@@ -70,8 +64,6 @@ img {
 		</tr>
 	</table>
 
-	<br>
-
 
 
 
@@ -91,16 +83,16 @@ img {
 				있습니다.
 			</td>
 			<td><a style="text-decoration: none; color: #c5c5c5"
-				href="hititem1.do?category1=${ca1}&pg=1&to=hititem1">인기상품순</a></td>
+				href="hititem2.do?category1=${ca1}&category2=${ca2}&category3=${ca3}&pg=1&to=hititem3">인기상품순</a></td>
 			<td>|</td>
 			<td><a style="text-decoration: none; color: #c5c5c5"
-				href="newitem1.do?category1=${ca1}&pg=1&to=newitem1">신상품순</a></td>
+				href="newitem2.do?category1=${ca1}&category2=${ca2}&category3=${ca3}&pg=1&to=newitem3">신상품순</a></td>
 			<td>|</td>
 			<td><a style="text-decoration: none; color: #c5c5c5"
-				href="lowitem1.do?category1=${ca1}&pg=1&to=lowitem1">낮은가격순</a></td>
+				href="lowitem2.do?category1=${ca1}&category2=${ca2}&category3=${ca3}&pg=1&to=lowitem3">낮은가격순</a></td>
 			<td>|</td>
 			<td><a style="text-decoration: none; color: #c5c5c5"
-				href="highitem1.do?category1=${ca1}&pg=1&to=highitem1">높은가격순</a></td>
+				href="highitem2.do?category1=${ca1}&category2=${ca2}&category3=${ca3}&pg=1&to=highitem3">높은가격순</a></td>
 		</tr>
 	</table>
 
@@ -128,7 +120,7 @@ img {
 						</tr>
 					</table>
 				</td>
-				<c:if test="${item.ro%5==0}">
+				<c:if test="${item.ro%5 ==0}">
 		</tr>
 		<tr>
 			</c:if>
@@ -137,6 +129,5 @@ img {
 	</table>
 	<div class="pagenavi">
 		<center>${page }</center>
-	</div>
 </body>
 </html>

@@ -13,7 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
+
 import com.kshop.shop.model.Fir_CategoryDto;
+import com.kshop.shop.model.ItemDto;
 import com.kshop.shop.model.JoinDto;
 import com.kshop.shop.model.MainDao;
 import com.kshop.shop.model.MemberDto;
@@ -40,11 +42,15 @@ public class MainController {
 		session.setAttribute("category1", list1);
 		session.setAttribute("category2", list2);
 		session.setAttribute("category3", list3);
+		List<ItemDto> list = dao.newitemlist();
+		
+		for(int i=0;i<list.size();i++){
+		list.get(i).setRo(i+1);
+		}
+		
+		System.out.println(list.size()+"아이템리스트사이즈!!");
 		ModelAndView mav = new ModelAndView();
-//		mav.addObject("category1", list1);
-//		mav.addObject("category2", list2);
-//		mav.addObject("category3", list3);
-
+		mav.addObject("itemlist", list);
 		mav.setViewName("home.tiles");
 		
 		return mav;
@@ -87,14 +93,13 @@ public class MainController {
 		@RequestMapping("loginon.do")
 		public String loginon(@RequestParam String id, @RequestParam String pass, HttpSession session){
 			MemberDto userInfo = dao.loginon(id, pass);
-			
-			System.out.println(userInfo.getState());
+
 			String addr = null;
 			if(userInfo != null){
 				session.setAttribute("userInfo", userInfo);
 				ModelAndView mav = new ModelAndView();
 				mav.addObject(userInfo);
-				mav.setViewName("redirect:home.do");
+				//mav.setViewName("redirect:home.do");
 				addr = "redirect:home.do";
 			}else{
 				addr = "/login/loginfail.tiles";	

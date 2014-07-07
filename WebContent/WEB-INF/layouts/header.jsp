@@ -38,7 +38,7 @@ A:visited {color:#747474; text-decoration:none; vertical-align: bottom;}/* 한번 
 			</c:when>
 			<c:when test="${userInfo==null}">
 			<a href="login.do"><font size="2">로그인</a> |
-			<a href="mypage.do">회원가입</a> |
+			<a href="join.do"><font size="2">회원가입</a> |
 			비회원주문조회 |
 			고객센터 
 			</font>
@@ -62,15 +62,15 @@ A:visited {color:#747474; text-decoration:none; vertical-align: bottom;}/* 한번 
 <ul id="menu">
 	<c:forEach var="category1" items="${category1}">
 	<li> 
-        <a href="salelist1.do?category1=${category1.fir_code} ">${category1.fir_name}</a>
+        <a href="salelist1.do?category1=${category1.fir_code}&pg=1&to=salelist1">${category1.fir_name}</a>
         <ul>
         <c:forEach var="category2" items="${category2}">
         	<c:if test="${ category1.fir_code == category2.fir_code }">
-        		<li><a href="salelist2.do?category1=${category1.fir_code}&category2=${category2.sec_code}">${category2.sec_name}</a>
+        		<li><a href="salelist2.do?category1=${category1.fir_code}&category2=${category2.sec_code}&pg=1&to=salelist2">${category2.sec_name}</a>
         		 	<ul>
 	       			<c:forEach var="category3" items="${category3}">
 	        			<c:if test="${ category2.sec_code == category3.sec_code }">
-	        				<li><a href="salelist3.do?category1=${category1.fir_code}&category2=${category2.sec_code}&category3=${category3.thr_code}">${category3.thr_name}</a></li>
+	        				<li><a href="salelist3.do?category1=${category1.fir_code}&category2=${category2.sec_code}&category3=${category3.thr_code}&pg=1&to=salelist3">${category3.thr_name}</a></li>
 	        			</c:if>     	
 		        	</c:forEach>
 	       		 	</ul>

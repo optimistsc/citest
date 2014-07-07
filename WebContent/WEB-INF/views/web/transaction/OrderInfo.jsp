@@ -63,7 +63,7 @@
 	
 	function openzip(){
 		window.open("${pageContext.request.contextPath}/searchzip.do","zipw","top=200, left=300, width=400, height=300, menubar=no, status=no, toolbar=no, location=no, scrollbars=yes");
-	}
+	}//MemberAdminController.java
 	
 	function openzip1(){
 		window.open("${pageContext.request.contextPath}/searchzip1.do","zipw","top=200, left=300, width=400, height=300, menubar=no, status=no, toolbar=no, location=no, scrollbars=yes");
@@ -90,27 +90,25 @@
 
 	<form action="" method="post" id="productForm" name="productForm">
 		<input type="hidden" value="${itemcode} name="itemcode">
-		<div style="width: 60%; margin: auto;">
+		<div style="width: 80%; margin: auto;">
 			<table class="TopTable" width="100%">
 				<tr>
 					<th>이미지</th>
 					<th>상품명</th>
 					<th>수 량</th>
-					<th>판매가</th>
-					<th>적립금</th>
+					<th>판매가</th>					
 					<th>배송비</th>
 					<th>합 계</th>
 				</tr>
 				<tr align="center">
-					<td width="10%"></td>
-					<td>상품이름 넣는곳</td>
-					<td width="20%">
-					<input type="text" maxlength="2" value="" size="2"> <input type="button" id="modifyEA"	name="modifyEA" value="수정">
+					<td width="20%"><img width="80%" src="${order.itemPic }"></td>
+					<td>${order.itemName}</td>
+					<td width="15%">
+					<input type="text" maxlength="2" value="${order.quantity}" size="2"> <input type="button" id="modifyEA"	name="modifyEA" value="수정">
 					</td>
-					<td width="10%">10,000원</td>
-					<td width="10%">190원</td>
+					<td width="10%">${order.itemPrice}원</td>					
 					<td width="10%">[조건]</td>
-					<td width="10%"><b>10,000원</b></td>
+					<td width="15%"><b>${order.itemPrice*order.quantity}원</b></td>
 				</tr>
 			</table>
 		</div>
@@ -126,8 +124,26 @@
 							총 주문 금액 합계 금액 입니다.</b><br />
 					<br />
 						<p style="line-height: 20px;">
-							상품 합계금액 : ?????원<br /> 배송비 : ?????원<br />
-						</p> <b>총 주문 합계 금액 :<font color="#990000"> ?????원</font></b></td>
+							상품 합계금액 : ${order.itemPrice*order.quantity}원<br /> 
+							배송비 : 
+							<c:choose>
+							<c:when test="${order.itemPrice*order.quantity>=50000}">
+							0
+							</c:when>
+							<c:otherwise>
+							2500
+							</c:otherwise>
+							</c:choose>
+							원<br />
+						</p> <b>총 주문 합계 금액 :<font color="#990000"> 
+							<c:choose>
+							<c:when test="${order.itemPrice*order.quantity>=50000}">
+							${order.itemPrice*order.quantity}
+							</c:when>
+							<c:otherwise>
+							${order.itemPrice*order.quantity+2500}
+							</c:otherwise>
+							</c:choose>원</font></b></td>
 				</tr>
 			</table>
 		</div>

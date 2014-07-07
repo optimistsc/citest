@@ -9,25 +9,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>회원가입 페이지</title>
 <script type="text/javascript">
-
-	function join() {
-		if (document.getElementById("name") == "") {
-			alert("이름을 입력하세요!!");
-
-		} else if (document.getElementById("birth") == "") {
-			alert("생년월일을 입력하세요!!");
-
-		} else {
-			document.joinform.action = "join.do";
-			document.joinform.submit();
-		}
-	}
 	
+	function join(){
+		document.joinform.submit();
+	}
+
 </script>
 </head>
 <body>
 	<h3>회원가입</h3>
-	<form action="join.do" method="post" name="joinform">
+	<form action="joinon.do" method="post" name="joinform">
 		<table border="1">
 
 			<tr>
@@ -52,8 +43,8 @@
 
 			<tr>
 				<td>주소</td>
-				<td><input name="zip1" readonly="readonly" type="text" /> - <input
-					name="zip2" readonly="readonly" type="text" /> <a href="#none"
+				<td><input name="zip1" type="text" /> - <input
+					name="zip2" type="text" /> <a href="#none"
 					onclick="ZipcodeFinder.Opener.bind('postBtn', 'postcode1', 'postcode2', 'addr1', 'layer', 'city_name', 'state_name');"
 					id="postBtn"> 우편번호</a><br /> <input name="addr1" type="text" /><br />
 					<input name="addr2" type="text" /></td>
@@ -61,7 +52,7 @@
 
 			<tr>
 				<td>전화번호</td>
-				<td><select name="tel1" id="tel1">
+				<td><select name="tel1" id="tel1" >
 						<option value="010">010</option>
 						<option value="011">011</option>
 						<option value="016">016</option>
@@ -74,9 +65,8 @@
 
 			<tr>
 				<td>이메일</td>
-				<td><input name="email1" value="" type="text" />@ <input
-					id="email2" readonly="readonly" value="" type="text" />
-					<select	id="email3" name="email3" onChange="email3_Change(this.value)">
+				<td><input name="email1" type="text" />@
+					<select	id="email2" name="email2" onchange="javascript:email(this)">
 						<option value="" selected="selected">- 이메일 선택 -</option>
 						<option value="naver.com">naver.com</option>
 						<option value="daum.net">daum.net</option>
@@ -87,7 +77,6 @@
 						<option value="korea.com">korea.com</option>
 						<option value="dreamwiz.com">dreamwiz.com</option>
 						<option value="gmail.com">gmail.com</option>
-						<option value="etc">직접입력</option>
 				</select></td>
 			</tr>
 
@@ -115,13 +104,12 @@
 						<option value="14">다시 태어나면 되고 싶은 것은?</option>
 						<option value="15">내가 좋아하는 캐릭터는?</option>
 				</select><br>
-				<input type="text" name="pwq_anser" /></td>
+				<input type="text" name="pwq_answer" /></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type="button"
 					value="회원가입" onclick="javascript:join();">&nbsp;&nbsp;&nbsp;&nbsp;
-
-					<input type="reset" value="다시쓰기"></td>
+				<input type="reset" value="다시쓰기"></td>
 			</tr>
 		</table>
 	</form>
