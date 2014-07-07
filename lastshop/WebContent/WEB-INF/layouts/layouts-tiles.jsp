@@ -10,7 +10,7 @@
         #wrapper{width:1000px;border:1px solid #eee; margin:0px auto;}
         #sub,#body,#sidebar{float:left;}
         #sub,#sidebar{wisth:150px;}
-        #body{width:1000px;height:1500px;}
+        #body{width:1000px;}
         #head{height:200px;background:#fff;}
         #foot{clear:both;height:350px;background:#fff;}
 </style>

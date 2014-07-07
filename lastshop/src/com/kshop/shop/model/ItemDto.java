@@ -18,13 +18,13 @@ public class ItemDto {
 	private int item_ea;
 	private String item_size;
 	private String item_color;
-	private int rownum;
-	
-	public int getRownum() {
-		return rownum;
+	private int ro;
+
+	public int getRo() {
+		return ro;
 	}
-	public void setRownum(int rownum) {
-		this.rownum = rownum;
+	public void setRo(int ro) {
+		this.ro = ro;
 	}
 	public int getThr_code() {
 		return thr_code;

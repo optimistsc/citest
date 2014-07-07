@@ -48,4 +48,32 @@ public class ItemServiceImpl implements ItemService {
 		return itemDao.getThr_Category();
 	}
 
+	@Override
+	public ItemDto getItemInfo(ItemDto itemDto) {
+		return itemDao.getItemInfo(itemDto);
+	}
+
+	@Override
+	public String itemModify(ItemDto itemDto, ItemOptionDtoList list,
+			UploadFileDto uploadFileDto) throws Exception {
+//		TODO Auto-generated method stub
+		String viewName = "";
+		if(null!=uploadFileDto.getFile()[0].getName() || null!=uploadFileDto.getFile()[1].getName()) {
+			fileUpload.fileDelete(uploadFileDto);
+			List<UploadFileDto> fdList = fileUpload.fileUpload(uploadFileDto);
+			if(null!=uploadFileDto.getFile()[0].getName()) {
+				itemDto.setS_picture(fdList.get(0).getFilePath());
+			}
+			if(null!=uploadFileDto.getFile()[1].getName()) {
+				itemDto.setB_picture(fdList.get(1).getFilePath());
+			}
+		}
+		if(itemDao.itemInsert(itemDto, list)) {
+			viewName = "/item_list.do?pg=1&key=&word=";
+		} else {
+			viewName = "/item_modify.do";
+		}
+		return viewName;
+	}
+
 }

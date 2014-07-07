@@ -53,7 +53,7 @@
 	</bean>
 	
  	<bean id="saleController" class="com.kshop.shop.controller.SaleController">
- 	    
+ 	  	<property name="dao" ref="saleDao"/>	
  	</bean>
  	
  	
@@ -94,6 +94,9 @@
 	<bean id="orderdao" class="com.kshop.shop.model.OrderDao">
 	 	<property name="iBatisTemplate" ref="sqlMapClientTemplate"/>
 	 </bean>
+	 <bean id="saleDao" class="com.kshop.shop.model.SaleDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"/>
+	</bean>
 
 	<!-- ViewResolver-->
 	

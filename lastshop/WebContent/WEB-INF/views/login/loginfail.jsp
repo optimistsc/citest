@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>로그인 페이지</title>
+
 <style type="text/css">
 	body {background-color: #fff}
 	#title { margin: 0 auto;
@@ -48,7 +49,10 @@
 </style>
 </head>
 <body>
+
 <script type="text/javascript">alert("아이디 혹은 비밀번호가 맞지 않습니다.");</script>
+
+ 
 <!-- 상단 -->
 <div id="title">
 <input type="image" border="0" img src="${pageContext.request.contextPath}/resources/img/loginlogo.jpg">

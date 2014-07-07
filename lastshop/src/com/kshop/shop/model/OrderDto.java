@@ -1,39 +1,64 @@
 package com.kshop.shop.model;
 
 public class OrderDto {
-	
-	private String no, name;
-	private int price, amount;
 
-	public String getNo() {
-		return no;
+	private String itemPic, itemCode, itemName, itemPrice, color, size;
+	private int quantity;
+
+	public String getItemPic() {
+		return itemPic;
 	}
 
-	public void setNo(String no) {
-		this.no = no;
+	public void setItemPic(String itemPic) {
+		this.itemPic = itemPic;
 	}
 
-	public String getName() {
-		return name;
+	public String getItemCode() {
+		return itemCode;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setItemCode(String itemCode) {
+		this.itemCode = itemCode;
 	}
 
-	public int getPrice() {
-		return price;
+	public String getItemName() {
+		return itemName;
 	}
 
-	public void setPrice(int price) {
-		this.price = price;
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
 	}
 
-	public int getAmount() {
-		return amount;
+	public String getItemPrice() {
+		return itemPrice;
 	}
 
-	public void setAmount(int amount) {
-		this.amount = amount;
+	public void setItemPrice(String itemPrice) {
+		this.itemPrice = itemPrice;
 	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
 }

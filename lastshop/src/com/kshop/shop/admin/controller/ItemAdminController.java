@@ -36,15 +36,20 @@ public class ItemAdminController {
 
 	@RequestMapping(value="item_modify.do", method=RequestMethod.GET)
 	public ModelAndView itemModifyMove(@RequestParam int opt_code){
-		System.out.println(opt_code);
+		ItemDto findDto = new ItemDto();
+		findDto.setOpt_code(opt_code);
 		ModelAndView mv = new ModelAndView();
-		
 		mv.addObject("categoryList", itemServiceImpl.getThr_Category());
-		
-		mv.setViewName("/item/addItem.tiles");
+		mv.addObject("itemDto", itemServiceImpl.getItemInfo(findDto));
+		mv.setViewName("/item/modifyItem.tiles");
 		return mv;
 	}
-	
 
+	@RequestMapping(value="item_modify.do", method=RequestMethod.POST)
+	public ModelAndView itemModifyMove(ItemDto itemDto, ItemOptionDtoList list, UploadFileDto uploadFileDto) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName(itemServiceImpl.itemModify(itemDto, list, uploadFileDto));
+		return mv;
+	}
 
 }

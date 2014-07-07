@@ -2,7 +2,9 @@ package com.kshop.shop.model;
 
 
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
+
 import com.kshop.util.RequestInfoDto;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -77,6 +79,11 @@ public class ItemDao {
 	public int getFindItemAreticle(RequestInfoDto requestInfoDto){
 		
 		return (int) sqlMapClientTemplate.queryForObject("getFindItemAreticle", requestInfoDto);
+	}
+	
+	//단일 상품 정보
+	public ItemDto getItemInfo(ItemDto itemDto) {
+		return (ItemDto) sqlMapClientTemplate.queryForObject("getItemInfo", itemDto);
 	}
 
 }

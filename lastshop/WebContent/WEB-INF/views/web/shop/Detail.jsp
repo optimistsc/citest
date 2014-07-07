@@ -9,20 +9,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <script type="text/javascript">
-function sum(n1, n2) {
-	return n1*n2;
+
+function sum(quantity) {
+	   document.getElementById('textfield').value=(quantity.value)*${itemDto.price};
+}
+function goOrder(){
+	
+	document.detailForm.action = "${pageContext.request.contextPath}/goOrder.do";
+	document.detailForm.submit();	
 }
 </script>
 </head>
 <body>
+<form action="" method="post" id="detailForm" name="detailForm" >
+<input type="hidden" id="itemPic" name="itemPic" value="${itemDto.s_picture}">
+<input type="hidden" id="itemCode" name="itemCode" value="${itemDto.item_code}">
+<input type="hidden" id="itemName" name="itemName" value="${itemDto.item_name}">
+<input type="hidden" id="itemPrice" name="itemPrice" value="${itemDto.price}">
+
+
 <table align="center">
 
 <tr>
-   <td rowspan="6"><img src="${itemDto.b_picture}"  width="300" height="400" 
+   <td rowspan="6"><img src="${itemDto.s_picture}"  width="300" height="400" 
 
 /></td>
    <td width="100" align="center">${itemDto.item_code}</td>
-   <td width="300">${itemDto.item_name}</td>
+   <td width="300" id="item_name">${itemDto.item_name}</td>
   </tr>
   <tr>
    <td align="center">가격</td>
@@ -31,7 +44,7 @@ function sum(n1, n2) {
   <tr>
    <td align="center">색상</td>
    <td>
-   <select name="color">
+   <select name="color" id="color">
    <option value="0" selected="selected">색상 선택
    <c:forEach var="option" items="${list }">
    <option value="${option.item_color}">${option.item_color} 
@@ -53,32 +66,37 @@ function sum(n1, n2) {
   <tr>
    <td align="center">수량</td>
    <td>
-   <select name="quantity">
-   <option value="1" onchanged="(1)" selected="selected">1
-   <option value="2" onchanged="(2)">2
-   <option value="3" onchanged="(3)">3
-   <option value="4" onchanged="(4)">4
-   <option value="5" onchanged="(5)">5
-   <option value="6" onchanged="(6)">6
-   <option value="7" onchanged="(7)">7
-   <option value="8" onchanged="(8)">8
-   <option value="9" onchanged="(9)">9
-   </select>
+  <select id="quantity" name="quantity" onchange="javascript:sum(this)">
+   <option value="1" selected="selected">1
+   <option value="2">2
+   <option value="3">3
+   <option value="4">4
+   <option value="5">5
+   <option value="6">6
+   <option value="7">7
+   <option value="8">8
+   <option value="9">9
    </td>
   </tr>
   <tr>
-   <td align="center"><input type="text" onPropertyChange="JavaScript:sum();"></td>
-   <td></td>
+   <td align="center"></td>
+   <td><input type="text" name="textfield" id="textfield"/></td>
   </tr>
 </table>
 <br>
 <br>
 <table align="center">
 <tr>
-<td><a href=><img src="/categorydesign/img/cart_btn.jpg" /></a></td>
-<td><a href=><img src="/categorydesign/img/buy_btn.jpg" /></a></td>
+<td><a href=><img src="${pageContext.request.contextPath}/img/cart_btn.jpg" /></a></td>
+<td><a href="javascript:goOrder();"><img src="${pageContext.request.contextPath}/img/buy_btn.jpg" /></a></td>
+</tr>
+<tr>
+<td colspan="2">
+<img src="${itemDto.b_picture}"/>
+</td>
 </tr>
 </table>
+</form>
 
 </body>
 </html>

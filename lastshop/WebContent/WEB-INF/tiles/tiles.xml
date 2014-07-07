@@ -4,7 +4,7 @@
 		"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 
 <tiles-definitions>
-	<!-- tiles -->
+	<!-- tiles wildcard -->
 	<definition name="layouts-tiles" template="/WEB-INF/layouts/layouts-tiles.jsp">
 		<put-attribute name="header"    value="/WEB-INF/layouts/header.jsp" />
 		<put-attribute name="content"   value="" />
@@ -13,6 +13,9 @@
 	
 	<definition name="*.tiles" extends="layouts-tiles">
 		<put-attribute name="content"   value="/WEB-INF/views/{1}.jsp" />
+	</definition>
+	<definition name="/join/*.tiles" extends="layouts-tiles">
+		<put-attribute name="content"   value="/WEB-INF/views/join/{1}.jsp" />
 	</definition>
 	<definition name="/login/*.tiles" extends="layouts-tiles">
 		<put-attribute name="content"   value="/WEB-INF/views/login/{1}.jsp" />

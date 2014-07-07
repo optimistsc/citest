@@ -9,25 +9,6 @@
 	<typeAlias alias="Order" type="com.kshop.shop.model.OrderDto"/>
 	<typeAlias alias="Item" type="com.kshop.shop.model.ItemOptionDto"/>
 	
-	<insert id="addOrder" parameterClass="Order">
-		insert into order2(
-			NO,
-			NAME,
-			PRICE,
-			AMOUNT
-		)
-		values(
-			#no#,#name#,#price#,#amount#
-		)
-	</insert>
 	
-	<update id="updateItem" parameterClass="Order">
-		update item set amount= amount-#amount#
-			where no = #no#
-	</update>
-	
-	<select id="findItem" resultClass="Item" parameterClass="String"><!-- resultClass="Item" : 셀렉트는 결과값이 행단위로 여러개 나올수 있기 때문에 반환받을수 있는 dto를 써줌. -->
-		select * from item where no=#no#
-	</select>
 	
 </sqlMap>
