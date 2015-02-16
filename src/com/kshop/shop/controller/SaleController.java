@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kshop.shop.model.*;
-import com.kshop.util.*;
+import com.kshop.shop.model.ItemDto;
+import com.kshop.shop.model.ItemOptionDto;
+import com.kshop.shop.model.SaleDao;
+import com.kshop.util.SaleConstant;
+import com.kshop.util.SalePageNavi;
 
 
 //일반사용자들의 구매 활동
@@ -239,7 +242,6 @@ public class SaleController {
 	@RequestMapping("salelist3.do")
 	public ModelAndView saleList3(@RequestParam int category1, int category2, int category3, int pg, String to){
 		ModelAndView mav= new ModelAndView();
-		SalePageNavi pn;
 		String to3=to;
 		List<ItemDto> list= dao.salelist3(category1, category2, category3,pg, SaleConstant.LIST_COUNT);
 		List<ItemDto> blist=dao.best(category1);
@@ -248,7 +250,6 @@ public class SaleController {
 		int ca1= category1;
 		int ca2=category2;
 		int ca3=category3;
-		pn = new SalePageNavi(cnt, pg);
 		mav.addObject("cnt", cnt);
 		mav.addObject("list",list);
 		mav.addObject("ca1", ca1);
@@ -263,7 +264,6 @@ public class SaleController {
 	@RequestMapping("hititem3.do")
 	public ModelAndView hititem3(@RequestParam int category1, int category2, int category3,int pg, String to){
 		ModelAndView mav= new ModelAndView();
-		SalePageNavi pn;
 		String to3=to;
 		List<ItemDto> list= dao.hitsalelist3(category1, category2, category3,pg, SaleConstant.LIST_COUNT);
 		List<ItemDto> blist=dao.best(category1);
@@ -272,7 +272,6 @@ public class SaleController {
 		int ca1= category1;
 		int ca2=category2;
 		int ca3=category3;
-		pn = new SalePageNavi(cnt, pg);
 		mav.addObject("cnt", cnt);
 		mav.addObject("list",list);
 		mav.addObject("ca1", ca1);
@@ -286,7 +285,6 @@ public class SaleController {
 	@RequestMapping("newitem3.do")
 	public ModelAndView newitem3(@RequestParam int category1, int category2, int category3,int pg, String to){
 		ModelAndView mav= new ModelAndView();
-		SalePageNavi pn;
 		String to3=to;
 		List<ItemDto> list= dao.newsalelist3(category1, category2, category3,pg, SaleConstant.LIST_COUNT);
 		List<ItemDto> blist=dao.best(category1);
@@ -295,7 +293,6 @@ public class SaleController {
 		int ca1= category1;
 		int ca2=category2;
 		int ca3=category3;
-		pn = new SalePageNavi(cnt, pg);
 		mav.addObject("cnt", cnt);
 		mav.addObject("list",list);
 		mav.addObject("ca1", ca1);
@@ -309,7 +306,6 @@ public class SaleController {
 	@RequestMapping("lowitem3.do")
 	public ModelAndView lowitem3(@RequestParam int category1, int category2, int category3,int pg, String to){
 		ModelAndView mav= new ModelAndView();
-		SalePageNavi pn;
 		String to3=to;
 		List<ItemDto> list= dao.lowsalelist3(category1, category2, category3,pg, SaleConstant.LIST_COUNT);
 		List<ItemDto> blist=dao.best(category1);
@@ -318,7 +314,6 @@ public class SaleController {
 		int ca1= category1;
 		int ca2=category2;
 		int ca3=category3;
-		pn = new SalePageNavi(cnt, pg);
 		mav.addObject("cnt", cnt);
 		mav.addObject("list",list);
 		mav.addObject("ca1", ca1);
@@ -332,7 +327,6 @@ public class SaleController {
 	@RequestMapping("highitem3.do")
 	public ModelAndView highitem3(@RequestParam int category1, int category2, int category3,int pg, String to){
 		ModelAndView mav= new ModelAndView();
-		SalePageNavi pn;
 		String to3=to;
 		List<ItemDto> list= dao.highsalelist3(category1, category2, category3,pg, SaleConstant.LIST_COUNT);
 		List<ItemDto> blist=dao.best(category1);
@@ -341,7 +335,6 @@ public class SaleController {
 		int ca1= category1;
 		int ca2=category2;
 		int ca3=category3;
-		pn = new SalePageNavi(cnt, pg);
 		mav.addObject("cnt", cnt);
 		mav.addObject("list",list);
 		mav.addObject("ca1", ca1);
