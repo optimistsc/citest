@@ -1,2 +1,3 @@
 language: java
-install: ant deps
+mvn test
+mvn install -DskipTests=true
