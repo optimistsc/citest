@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Kshop">
+	<typeAlias alias="Member" type="com.kshop.shop.model.MemberDto"/>
+	<typeAlias alias="Category1" type="com.kshop.shop.model.Fir_CategoryDto"/>
+	<typeAlias alias="Category2" type="com.kshop.shop.model.Sec_CategoryDto"/>
+	<typeAlias alias="Category3" type="com.kshop.shop.model.Thr_CategoryDto"/>
+	<typeAlias alias="itemDto" type="com.kshop.shop.model.ItemDto"/>
+	<typeAlias alias="itemOptionDto" type="com.kshop.shop.model.ItemOptionDto"/>
+	<typeAlias alias="RequestInfoDto" type="com.kshop.util.RequestInfoDto"/>
+	<typeAlias alias="joinInfo" type="com.kshop.shop.model.JoinDto"/>
+
+
+  <!-- Use type aliases to avoid typing the full classname every time. -->
+
+  
+
+  <!-- Result maps describe the mapping between the columns returned
+       from a query, and the class properties.  A result map isn't
+       necessary if the columns (or aliases) match to the properties 
+       exactly. -->
+ 
+ <select id="getFir_Category" resultClass="Category1">
+  select *
+  from fir_category
+ </select>
+ 
+  <select id="getSec_Category" resultClass="Category2">
+  select *
+  from sec_category
+ </select>
+ 
+  <select id="getThr_Category" resultClass="Category3">
+  select *
+  from thr_category
+  order by thr_name
+ </select>
+
+ <select id="userinfo" parameterClass="java.util.Map"  resultClass="Member">
+  select *
+  from member
+  where id = #id# and pw = #pass#
+ </select>
+ 
+
+ <insert id="join" parameterClass="joinInfo">
+ insert into member(id,name,birth,tel1,tel2,tel3,email1,email2,addr1,addr2,zip1,zip2,join_date,state,pw,pwq_answer,pwq_code)
+ values(#id#,#name#,#birth#,#tel1#,#tel2#,#tel3#,#email1#,#email2#,#addr1#,#addr2#,#zip1#,#zip2#,sysdate,'회원',#pw#,#pwq_answer#,#pwq_code#)
+ </insert>
+
+  
+ <insert id="itemDtoInsert" parameterClass="itemDto">
+  insert into item_info (item_code, item_name, company, country, brand, importation, meterial, attention, price, s_picture, b_picture, thr_code)
+  values(item_code_seq.nextval, #item_name#, #company#, #country#, #brand#, #importation#, #meterial#, #attention#, #price#, #s_picture#, #b_picture#, #thr_code#)
+ </insert>
+  
+ <insert id="optionDtoInsert" parameterClass="itemOptionDto">
+  insert into item_option (opt_code, item_code, item_size, item_color, item_ea)
+  values(#opt_code#, #ref_code#, #item_size#, #item_color#, #item_ea#)
+ </insert>
+ 
+ <select id="nowRefItemcode" resultClass="int">
+  select item_code_seq.currval
+  from dual
+ </select> 
+  
+ <!-- 전체 상품 수  -->
+ <select id="getTotalItemArticle" resultClass="int">
+	select count(opt_code) 
+	from item_option
+ </select>
+ 
+
+  <!-- 전체 상품 조회-->
+
+ <!-- 검색 한 상품 수 -->
+ <select id="getFindItemAreticle" parameterClass="RequestInfoDto" resultClass="int">
+ 	select count(opt_code)
+ 	from item_option io, item_info ii
+	where io.item_code = ii.item_code
+ 	and $key$ like '%'||#word#||'%'
+ </select>
+ 
+  <!-- 전체 상품 조회 -->
+
+ <select id="itemList" parameterClass="RequestInfoDto" resultClass="itemDto">
+	select a.opt_code, a.item_name, a.item_color, a.item_size, a.item_ea, a.price 
+		from 
+     	(select rank() over (order by io.opt_code desc) rankk, ii.item_code, ii.item_name, ii.price, io.opt_code 
+     	, io.item_size, io.item_color, io.item_ea
+     	from item_info ii, item_option io
+     	where ii.item_code=io.item_code) a
+	where rankk between ((#currentPage# - 1) * #lpg# + 1) and (((#currentPage# - 1) * #lpg# + 1) + #lpg# - 1)
+	
+ </select>
+ 
+ <!-- 검색 된 상품 조회 -->
+ <select id="searchItem" parameterClass="RequestInfoDto" resultClass="itemDto">
+ 	select a.opt_code, a.item_name, a.item_color, a.item_size, a.item_ea, a.price 
+		from 
+     	(select rank() over (order by io.opt_code desc) rankk, ii.item_code, ii.item_name, ii.price, io.opt_code 
+     	, io.item_size, io.item_color, io.item_ea
+     	from item_info ii, item_option io
+     	where ii.item_code=io.item_code and $key$ like '%'||#word#||'%') a
+	where rankk between ((#currentPage# - 1) * #lpg# + 1) and (((#currentPage# - 1) * #lpg# + 1) + #lpg# - 1)
+ </select>
+ 
+ <!-- 회원 상품  -->
+ <select id="count1" parameterClass="int" resultClass="int">
+    select count(*)
+ 	from fir_category f, sec_category s, thr_category t,item_info i
+  	 where f.fir_code=s.fir_code and s.sec_code=t.sec_code and t.thr_code=i.thr_code
+            and f.fir_code = #category1#
+ </select>
+<select id="salelist1" parameterClass="int" resultClass="itemDto">
+	select i.item_name, i.item_code, i.price, i.s_picture, rownum
+	from fir_category f, sec_category s, thr_category t,item_info i
+	where f.fir_code=s.fir_code and s.sec_code=t.sec_code and t.thr_code=i.thr_code
+     		 and f.fir_code = #category1#
+ </select>
+ 
+<select id="selectlist" parameterClass="int" resultClass="itemOptionDto"> 
+	select item_size, item_color, item_ea
+	from item_option
+	where item_code=#itemnum#	
+</select>
+<select id="selectitem" parameterClass="int" resultClass="itemDto"> 
+	select item_name, price, item_code, b_picture
+	from item_info
+	where item_code=#itemnum#	
+</select>
+
+</sqlMap>
