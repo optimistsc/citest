@@ -5,7 +5,7 @@
 <head>
 <script type="text/javascript">
 
-window.onload=function(){
+window.onload=function() {
 	document.location.href="home.do";
 }
 
